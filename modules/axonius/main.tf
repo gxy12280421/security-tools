@@ -1,5 +1,5 @@
 # Define an S3 bucket for storing the CloudFormation template
-resource "aws_s3_bucket" "bucket" {
+resource "aws_s3_bucket" "axonius_bucket" {
   bucket = var.bucket_name
 }
 
@@ -7,7 +7,7 @@ resource "aws_s3_bucket" "bucket" {
 resource "aws_s3_object" "tenable_template_upload" {
   bucket = aws_s3_bucket.tenable_stackset_bucket.bucket
   key    = var.bucket_key
-  source = var.bucket_source    
+  source = var.bucket_source
   etag   = filemd5(var.s3_bucket_source) # This ensures template changes trigger updates
 }
 

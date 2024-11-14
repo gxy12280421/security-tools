@@ -14,7 +14,7 @@ resource "aws_s3_object" "tenable_template_upload" {
 # Create the CloudFormation StackSet
 resource "aws_cloudformation_stack_set" "tenable" {
   name             = var.stackset_name
-  template_url     = "https://s3.amazonaws.com/${aws_s3_bucket.bucket.bucket}/tenable_template.yaml" # Correct S3 URL for us-east-1
+  template_url     = "https://s3.amazonaws.com/${aws_s3_bucket.tenable_bucket.bucket}/tenable_template.yaml" # Correct S3 URL for us-east-1
   capabilities     = ["CAPABILITY_NAMED_IAM"]
   permission_model = "SERVICE_MANAGED"
   call_as          = "DELEGATED_ADMIN"
@@ -43,7 +43,7 @@ resource "aws_cloudformation_stack_set_instance" "tenable" {
 
   deployment_targets {
     organizational_unit_ids = [
-      data.aws_organizations_organization.org.roots[0].id # Assuming you are using AWS Organizations
+      data.aws_organizations_organization.default.roots[0].id # Assuming you are using AWS Organizations
     ]
   }
 }
