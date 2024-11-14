@@ -5,10 +5,7 @@ Parameters:
   RoleName:
     Type: String
     Description: The name of the IAM Role
-    Default: "TenableRole"
-  UserArn:
-    Type: String
-    Description: Arn of User
+    Default: ""
 
 Resources:
   TenableRole:
