@@ -1,5 +1,5 @@
 locals {
-  excluded_ou_names = ["security", "security-old"]  # OU names to exclude
+  excluded_ou_names = ["Security", "Security-old"]  # OU names to exclude
   
   # Collect the OUs that are not in the excluded list
   deploy_ou_ids = [
