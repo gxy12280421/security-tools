@@ -42,8 +42,9 @@ resource "aws_cloudformation_stack_set_instance" "tenable" {
   call_as        = "DELEGATED_ADMIN"
 
   deployment_targets {
-    organizational_unit_ids = [
-      data.aws_organizations_organization.default.roots[0].id # Assuming you are using AWS Organizations
-    ]
+    # organizational_unit_ids = [
+    #   data.aws_organizations_organization.default.roots[0].id # Assuming you are using AWS Organizations
+    # ]
+    organizational_unit_ids = local.deploy_ou_ids
   }
 }
